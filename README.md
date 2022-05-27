@@ -1,11 +1,10 @@
-Final-Assignment
+First-Assignment Research Track2
 ================================
 
-Final assignment of the Research Track 1 course, development of a software architecture for the control of a mobile robot.
-It's a Python code to control the movement of a robot inside a the given map which resembles a box with rooms. The user must choose a modality of control of the robot:
-* autonomously reach a x,y coordinate inserted by the user.
-* let the user drive the robot with the keyboard.
-* let the user drive the robot assisting them to avoid collisions.
+The first assignment is devided in three parts:.
+* Creating a full documentation using Sphinx or Doxygen for the [RT1 final assignment code](https://github.com/AliceCatalano/Research-Track-1-Final-Assignment.git).
+* Create a jupiter notebook to initialize a new interface to drive the robot following the [final assignment requests](https://github.com/AliceCatalano/Research-Track-1-Final-Assignment.git).
+* Perform a statistical analysis comparing [my solution](https://github.com/AliceCatalano/Research-Track-1-Assignment-1.git) for the first assignment of RT1 and the [given solution](https://github.com/CarmineD8/python_simulator.git).
 
 Installing and running
 ----------------------
