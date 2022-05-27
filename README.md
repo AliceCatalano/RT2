@@ -6,30 +6,10 @@ The first assignment is devided in three parts:.
 * Create a jupiter notebook to initialize a new interface to drive the robot following the [final assignment requests](https://github.com/AliceCatalano/Research-Track-1-Final-Assignment.git).
 * Perform a statistical analysis comparing [my solution](https://github.com/AliceCatalano/Research-Track-1-Assignment-1.git) for the first assignment of RT1 and the [given solution](https://github.com/CarmineD8/python_simulator.git).
 
-Installing and running
+First Task
 ----------------------
-Download (or even better, fork) the repository from: [CarmineD8/final_assignment](https://github.com/CarmineD8/final_assignment.git) and the [slam_gmapping](https://github.com/CarmineD8/slam_gmapping.git) package, having care to switch on the `noetic` branch.
-The ros navigation stack
-```bash
-Apt-get install ros-<your_ros_distro>-navigation
-```
-is needed
 
-After you download and build the workspace, make sure to make all the .py files in the scripts folder as executables:
-```bash
-chmod +x <name_pythonSript.py>
-```
 
-then run in three different shells the three launcher needed:
-```bash
-$ roslaunch final_assignment simulation_gmapping.launch
-$ roslaunch final_assignment move_base.launch
-$ roslaunch assignment_three launcher.launch
-```
-
-the first two launch files are launching a robotic simulation on Gazebo and Rviz, the last launch file is the one that executes the user interface with the explenation of the actions in the code.
-
-Structure
 -----------------------------
 The logic of the code and how those three nodes communicate is written in the [flowchart](Final_flowchar.jpg).
 The software rely on the move_baseand gmapping packages for localizing the robot and plan the motion.
