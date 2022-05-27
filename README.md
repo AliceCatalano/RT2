@@ -41,4 +41,7 @@ In these two cases the position and scanning of the robot is displayed in a 3D e
 
 Third Task
 ------------------
-The Sphinx documentation for the whole code is available at the following link [Final_assignment_documentation](https://alicecatalano.github.io/Reasearcch-Track-1-Final-Assignment/)
+As last task a statistical analysis was required, comparing the codes of the first assignment which links are given at the beginning of this Readme file.
+I decided to compare:
+**speed of the two codes**
+This is a parametric test
