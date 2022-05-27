@@ -49,8 +49,16 @@ I decided to compare:
 **Speed of the two codes**  
 This is a parametric test, in which the relevant test statistic, t, is calculated from the sample data and then compared with its probable value based on t-distribution at a specified level of significance for concerning degrees of freedom for accepting or rejecting the null hypothesis (H0: the codes work at the same speed).  
 If the H0 can be rejected then I can support the alternative hypothesis (Ha: my code is faster).  
-Since in this case the t_calculated > t_from_table it can reject the H0 ans dupport the Ha.
+Since in this case the t_calculated > t_from_table it can reject the H0 and support the Ha.
 
 **Wrong Turns**  
 For this I did the same parametric test, and for wrong turn I mean all the time the robot fixes its trajectory, starting a "zigzag" route.  
-In this case the H0: would be that both the code have the same efficiency in
+In this case  
+H0: would be that both the code have the same efficiency in taking a straight route  
+Ha: Professor's code is more efficient in taking a straight route.  
+Through the t-test we get the same result as before so t_calculated > t_from_table it can reject the H0 and support the Ha.
+
+**Crash test**  
+This is a non-parametric test, and in this case the Chi-square test is used, in which we are going to compare the difference that exists between my observed counts and
+the counts that would be expected if there were no relationship at all in the population.  
+From the result it's seeable that the probability of error obtained in rejecting the null hypothesis is really low, so I can rejected easily.
