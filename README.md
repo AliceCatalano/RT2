@@ -45,8 +45,11 @@ Third Task
 ------------------
 As last task a statistical analysis was required, comparing the codes of the first assignment which links are given at the beginning of this Readme file.  
 I decided to compare:  
-**speed of the two codes**  
+
+**Speed of the two codes**  
 This is a parametric test, in which the relevant test statistic, t, is calculated from the sample data and then compared with its probable value based on t-distribution at a specified level of significance for concerning degrees of freedom for accepting or rejecting the null hypothesis (H0: the codes work at the same speed).  
 If the H0 can be rejected then I can support the alternative hypothesis (Ha: my code is faster).  
-Since in this case the t_calculated > t_from_table ti can reject the H0 ans dupport the Ha.
+Since in this case the t_calculated > t_from_table it can reject the H0 ans dupport the Ha.
 
+**Wrong Turns**  
+For this I did the same parametric test, and for wrong turn I mean all the time the robot fixes its trajectory, starting a "zigzag" route.
