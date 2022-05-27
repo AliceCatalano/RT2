@@ -38,7 +38,7 @@ In particular, for this function it was needed a change in the code used in the 
 All the output graphs are displayed unther the choice menu.
 
 ### Mode 2 and 3 ###
-In this modalities the robot is drove by the user with the buttons on the screen, which are intuitive and with a simple checkbox the user can initialize the collision avoidance function, that will stop the robot if a collision is suspected. This functionality is guarateed by a flag inserted in the new version of the code, now called `choice3_rt2.py`.  
+In this modalities the robot is drove by the user with the buttons on the screen, which are intuitive and with a simple checkbox the user can initialize the collision avoidance function, that will stop the robot if a collision is suspected. This functionality is guarateed by a flag inserted in the new version of the code, now called `choice3_rt2.py`. Also the user can choose the speed of the robot through the slider widget.  
 In these two cases the position and scanning of the robot is displayed in a 3D environment. 
 
 Third Task
@@ -52,4 +52,5 @@ If the H0 can be rejected then I can support the alternative hypothesis (Ha: my 
 Since in this case the t_calculated > t_from_table it can reject the H0 ans dupport the Ha.
 
 **Wrong Turns**  
-For this I did the same parametric test, and for wrong turn I mean all the time the robot fixes its trajectory, starting a "zigzag" route.
+For this I did the same parametric test, and for wrong turn I mean all the time the robot fixes its trajectory, starting a "zigzag" route.  
+In this case the H0: would be that both the code have the same efficiency in
