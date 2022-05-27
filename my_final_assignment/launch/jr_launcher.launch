@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<launch>
+   
+   <param name="collision_avoidance" value="false" />
+   
+   <node name="coordinate_controller" pkg="my_final_assignment" type="choice1.py"  />
+
+   <node name="keyboard_remap_node" pkg="my_final_assignment" type="choice3.py"  />
+
+</launch>

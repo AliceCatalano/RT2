@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>scripts.choice3 &mdash; final_comment 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> final_comment
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">final_comment</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>scripts.choice3</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for scripts.choice3</h1><div class="highlight"><pre>
+<span></span><span class="ch">#! /usr/bin/env python</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: choice3</span>
+<span class="sd">   :platform: Unix</span>
+<span class="sd">   :synopsis: Python code to let the user drive the robot safely </span>
+<span class="sd">.. moduleauthor:: Alice Maria Catalano &lt;s5157341@studenti.unige.it&gt;</span>
+
+<span class="sd">Subscribes to:</span>
+<span class="sd">    /remap_cmd_vel to send the velocity in different cases based on the scanning</span>
+<span class="sd">    /scan to get the laser scanning of the map</span>
+
+<span class="sd">Publishes to:</span>
+<span class="sd">    /cmd_vel the desired distance from the obstacles deteced.</span>
+
+<span class="sd">This node implements the driving of the robot with obstacle avoidance.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">geometry_msgs.msg</span> <span class="kn">import</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">Vector3</span>    <span class="c1">#for cmd_vel topic</span>
+<span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">LaserScan</span>           <span class="c1">#for scan topic</span>
+
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">init</span> <span class="o">=</span> <span class="n">Vector3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">repost</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">(</span> <span class="n">init</span><span class="p">,</span> <span class="n">init</span><span class="p">)</span>
+
+<div class="viewcode-block" id="minimum_th"><a class="viewcode-back" href="../../index.html#scripts.choice3.minimum_th">[docs]</a><span class="k">def</span> <span class="nf">minimum_th</span><span class="p">(</span><span class="n">ranges</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to section the ranges array in 3 parts and store the minimum distance for each of them.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        *ranges* array of integers coming from the `LaserScan` topic</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        *distance* array of integers containing the minimum distance from the right, center and left scanned ranges</span>
+<span class="sd">    </span>
+<span class="sd">    The user choice is passed to the `os` to launch the chosen launch file.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">distance</span><span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">240</span><span class="p">]</span>
+    <span class="n">center</span> <span class="o">=</span> <span class="n">ranges</span><span class="p">[</span><span class="mi">240</span><span class="p">:</span><span class="mi">480</span><span class="p">]</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">ranges</span><span class="p">[</span><span class="mi">480</span><span class="p">:</span><span class="mi">721</span><span class="p">]</span>
+    
+    <span class="n">distance</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+    <span class="n">distance</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">center</span><span class="p">)</span>
+    <span class="n">distance</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">left</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">distance</span></div>
+        
+<div class="viewcode-block" id="clbk_scan"><a class="viewcode-back" href="../../index.html#scripts.choice3.clbk_scan">[docs]</a><span class="k">def</span> <span class="nf">clbk_scan</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Callback to compute the minimun obstacle distance to the right, left and in front of the robot.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        *data* variable name for the message that is passed in, in this case the sensor_msgs</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        *repost* global variable that modifies the velocity of the robot based on its position</span>
+<span class="sd">    </span>
+<span class="sd">    The publisher is initialized and publishes on the `repost` variable</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">repost</span>
+    <span class="n">pub</span><span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s1">&#39;cmd_vel&#39;</span><span class="p">,</span><span class="n">Twist</span><span class="p">,</span> <span class="n">queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    
+    <span class="n">distances</span> <span class="o">=</span> <span class="n">minimum_th</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">ranges</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">distances</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">threshold</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">repost</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="p">:</span>
+            <span class="n">repost</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>    
+    
+    <span class="k">if</span> <span class="n">distances</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">repost</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span>
+            <span class="n">repost</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">if</span> <span class="n">distances</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">threshold</span> <span class="p">:</span>
+        <span class="k">if</span> <span class="n">repost</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span>
+            <span class="n">repost</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="n">pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">repost</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="clbk_remap"><a class="viewcode-back" href="../../index.html#scripts.choice3.clbk_remap">[docs]</a><span class="k">def</span> <span class="nf">clbk_remap</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Callback to copy the remap_cmd_vel on repost which can be modified or left untouched</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        *data* variable name for the message that is passed in, in this case the geometry_msgs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="k">global</span> <span class="n">repost</span>
+    <span class="n">repost</span> <span class="o">=</span> <span class="n">data</span></div>
+  
+<div class="viewcode-block" id="inputKey_remap"><a class="viewcode-back" href="../../index.html#scripts.choice3.inputKey_remap">[docs]</a><span class="k">def</span> <span class="nf">inputKey_remap</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to initialize the node `inputKey_node`.</span>
+<span class="sd">    Subscribes to the topics `Twist` and `LaserScan`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s1">&#39;inputKey_node&#39;</span><span class="p">)</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;/remap_cmd_vel&quot;</span><span class="p">,</span> <span class="n">Twist</span><span class="p">,</span> <span class="n">clbk_remap</span><span class="p">)</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;/scan&quot;</span><span class="p">,</span> <span class="n">LaserScan</span><span class="p">,</span> <span class="n">clbk_scan</span><span class="p">)</span>
+    <span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span></div>
+    
+
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">inputKey_remap</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Alice Maria Catalano.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to RT1_FinalAssignment’s documentation! &mdash; final_comment 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> final_comment
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to RT1_FinalAssignment’s documentation!</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#module-scripts.input_controller">User Interface Module</a></li>
+<li><a class="reference internal" href="#module-scripts.choice1">Modality one Module</a></li>
+<li><a class="reference internal" href="#module-scripts.choice2">Modality two Module</a></li>
+<li><a class="reference internal" href="#module-scripts.choice3">Modality three Module</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">final_comment</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>Welcome to RT1_FinalAssignment’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="welcome-to-rt1-finalassignment-s-documentation">
+<h1>Welcome to RT1_FinalAssignment’s documentation!<a class="headerlink" href="#welcome-to-rt1-finalassignment-s-documentation" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="module-scripts.input_controller">
+<span id="user-interface-module"></span><h1>User Interface Module<a class="headerlink" href="#module-scripts.input_controller" title="Permalink to this headline"></a></h1>
+<span class="target" id="module-input_controller"></span><dl class="simple">
+<dt>Service:</dt><dd><p>/directions
+/input_key</p>
+</dd>
+</dl>
+<p>This node implements the user interface, takes the user input and launches the specific launch file.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.input_controller.choice1">
+<span class="sig-prename descclassname"><span class="pre">scripts.input_controller.</span></span><span class="sig-name descname"><span class="pre">choice1</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/input_controller.html#choice1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.input_controller.choice1" title="Permalink to this definition"></a></dt>
+<dd><p>Function to handle the first modality of moving the robot, asking to the user the coordinates.</p>
+<dl class="simple">
+<dt>Service:</dt><dd><p>/directions</p>
+</dd>
+</dl>
+<p>The user message is passed to the service <code class="docutils literal notranslate"><span class="pre">manage_input</span></code>, advertised by <a class="reference internal" href="#module-choice1" title="choice1: Python code to move the robot to the coordinates given by the user (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">choice1</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.input_controller.choice2">
+<span class="sig-prename descclassname"><span class="pre">scripts.input_controller.</span></span><span class="sig-name descname"><span class="pre">choice2</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/input_controller.html#choice2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.input_controller.choice2" title="Permalink to this definition"></a></dt>
+<dd><p>Function to handle the second modality of moving the robot, asking the user to directly drive the robot sending value 1.</p>
+<dl class="simple">
+<dt>Service:</dt><dd><p>/input_key</p>
+</dd>
+</dl>
+<p>The user choice is passed to the service <code class="docutils literal notranslate"><span class="pre">manage_input</span></code>, advertised by <a class="reference internal" href="#module-choice2" title="choice2: Python code to let the user drive the robot (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">choice2</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.input_controller.choice3">
+<span class="sig-prename descclassname"><span class="pre">scripts.input_controller.</span></span><span class="sig-name descname"><span class="pre">choice3</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/input_controller.html#choice3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.input_controller.choice3" title="Permalink to this definition"></a></dt>
+<dd><p>Function to handle the third modality of moving the robot, asking the user to directly drive the robot sending value 2.</p>
+<dl class="simple">
+<dt>Service:</dt><dd><p>/input_key</p>
+</dd>
+</dl>
+<p>The user choice is passed to the service <code class="docutils literal notranslate"><span class="pre">manage_input</span></code>, advertised by <a class="reference internal" href="#module-choice2" title="choice2: Python code to let the user drive the robot (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">choice2</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.input_controller.userInterface">
+<span class="sig-prename descclassname"><span class="pre">scripts.input_controller.</span></span><span class="sig-name descname"><span class="pre">userInterface</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/input_controller.html#userInterface"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.input_controller.userInterface" title="Permalink to this definition"></a></dt>
+<dd><p>Function to print the text to show to the user.</p>
+<p>Returns:
+<em>input(String)</em> value from the user to send it to the menage service.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-scripts.choice1">
+<span id="modality-one-module"></span><h1>Modality one Module<a class="headerlink" href="#module-scripts.choice1" title="Permalink to this headline"></a></h1>
+<span class="target" id="module-choice1"></span><dl class="simple">
+<dt>Service:</dt><dd><p>/directions</p>
+</dd>
+<dt>Action:</dt><dd><p>/move_base
+/actionlib</p>
+</dd>
+</dl>
+<p>This node implements the automatic movement of the robot from it’s current/initial position, to the one inserted by the user
+evaluating if it is reachable or not.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.choice1.directions_server">
+<span class="sig-prename descclassname"><span class="pre">scripts.choice1.</span></span><span class="sig-name descname"><span class="pre">directions_server</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/choice1.html#directions_server"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.choice1.directions_server" title="Permalink to this definition"></a></dt>
+<dd><p>Function that describes the node <cite>directions_controller</cite> to the user.</p>
+<p>calls the service handler to manage the <cite>directions</cite> service, retriving the values from the <cite>manage_input</cite> function.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.choice1.manage_input">
+<span class="sig-prename descclassname"><span class="pre">scripts.choice1.</span></span><span class="sig-name descname"><span class="pre">manage_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/choice1.html#manage_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.choice1.manage_input" title="Permalink to this definition"></a></dt>
+<dd><p>Function to handle the user choice of mode 1. Sets the target and waits for the result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>*request</strong> (<em>float64 x</em><em>, </em><em>float64 y</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>when the goal is reached
+-1: when the goal is not reached or not reachable</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>1</p>
+</dd>
+</dl>
+<p>The user choice is passed to the action parameters, send to the server with <cite>target</cite> variable and waits to check if the choosen point can be reached or not (in this case will call the cancel_goal() function)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-scripts.choice2">
+<span id="modality-two-module"></span><h1>Modality two Module<a class="headerlink" href="#module-scripts.choice2" title="Permalink to this headline"></a></h1>
+<span class="target" id="module-choice2"></span><dl class="simple">
+<dt>Service:</dt><dd><p>/input_key</p>
+</dd>
+<dt>This node implements the lauching of the last 2 modalities:</dt><dd><p>mode2. the user is free to drive the robot as he/her prefers without any constraint
+mode3. the user drives the robot but there will be a collision control, avoiding the user to hit obstacles.</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.choice2.input_key_server">
+<span class="sig-prename descclassname"><span class="pre">scripts.choice2.</span></span><span class="sig-name descname"><span class="pre">input_key_server</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/choice2.html#input_key_server"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.choice2.input_key_server" title="Permalink to this definition"></a></dt>
+<dd><p>Function that describes the node <cite>keyboard_controller</cite> to the user.</p>
+<p>calls the service handler to manage the <cite>input_key</cite> service, retriving the values from the <cite>manage_input</cite> function.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.choice2.manage_input">
+<span class="sig-prename descclassname"><span class="pre">scripts.choice2.</span></span><span class="sig-name descname"><span class="pre">manage_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/choice2.html#manage_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.choice2.manage_input" title="Permalink to this definition"></a></dt>
+<dd><p>Function called by both choice 2 and 3 but if mode 3 is choosen here the launcher for that specific mode is called.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>*request</strong> (<em>float64 x</em><em>, </em><em>float64 y</em>) – </p>
+</dd>
+</dl>
+<p>The user choice is passed to the <cite>os</cite> to launch the chosen launch file.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-scripts.choice3">
+<span id="modality-three-module"></span><h1>Modality three Module<a class="headerlink" href="#module-scripts.choice3" title="Permalink to this headline"></a></h1>
+<span class="target" id="module-choice3"></span><dl class="simple">
+<dt>Subscribes to:</dt><dd><p>/remap_cmd_vel to send the velocity in different cases based on the scanning
+/scan to get the laser scanning of the map</p>
+</dd>
+<dt>Publishes to:</dt><dd><p>/cmd_vel the desired distance from the obstacles deteced.</p>
+</dd>
+</dl>
+<p>This node implements the driving of the robot with obstacle avoidance.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.choice3.clbk_remap">
+<span class="sig-prename descclassname"><span class="pre">scripts.choice3.</span></span><span class="sig-name descname"><span class="pre">clbk_remap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/choice3.html#clbk_remap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.choice3.clbk_remap" title="Permalink to this definition"></a></dt>
+<dd><p>Callback to copy the remap_cmd_vel on repost which can be modified or left untouched</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in</strong> (<em>*data* variable name for the message that is passed</em>) – </p></li>
+<li><p><strong>geometry_msgs</strong> (<em>in this case the</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.choice3.clbk_scan">
+<span class="sig-prename descclassname"><span class="pre">scripts.choice3.</span></span><span class="sig-name descname"><span class="pre">clbk_scan</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/choice3.html#clbk_scan"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.choice3.clbk_scan" title="Permalink to this definition"></a></dt>
+<dd><p>Callback to compute the minimun obstacle distance to the right, left and in front of the robot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in</strong> (<em>*data* variable name for the message that is passed</em>) – </p></li>
+<li><p><strong>sensor_msgs</strong> (<em>in this case the</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>repost</em> global variable that modifies the velocity of the robot based on its position</p>
+</dd>
+</dl>
+<p>The publisher is initialized and publishes on the <cite>repost</cite> variable</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.choice3.inputKey_remap">
+<span class="sig-prename descclassname"><span class="pre">scripts.choice3.</span></span><span class="sig-name descname"><span class="pre">inputKey_remap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/choice3.html#inputKey_remap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.choice3.inputKey_remap" title="Permalink to this definition"></a></dt>
+<dd><p>Function to initialize the node <cite>inputKey_node</cite>.
+Subscribes to the topics <cite>Twist</cite> and <cite>LaserScan</cite>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.choice3.minimum_th">
+<span class="sig-prename descclassname"><span class="pre">scripts.choice3.</span></span><span class="sig-name descname"><span class="pre">minimum_th</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ranges</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/choice3.html#minimum_th"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.choice3.minimum_th" title="Permalink to this definition"></a></dt>
+<dd><p>Function to section the ranges array in 3 parts and store the minimum distance for each of them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>topic</strong> (<em>*ranges* array of integers coming from the LaserScan</em>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>distance</em> array of integers containing the minimum distance from the right, center and left scanned ranges</p>
+</dd>
+</dl>
+<p>The user choice is passed to the <cite>os</cite> to launch the chosen launch file.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Alice Maria Catalano.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

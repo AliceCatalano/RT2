@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<launch>
+    <node name= "userInt" pkg= "my_final_assignment" type= "input_controller.py"  output= "screen"  />
+   
+   <node name= "choice1" pkg= "my_final_assignment" type= "choice1.py"  output="screen"  />
+
+ <node name= "input_key" pkg= "my_final_assignment" type= "choice2.py"  output="screen" />
+
+</launch>
