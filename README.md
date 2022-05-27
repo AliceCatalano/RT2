@@ -8,34 +8,37 @@ The first assignment is devided in three parts:.
 
 First Task
 ----------------------
+In this part of the work, after installing Sphinx and ReadTheDocs theme, I just commented the codes of the previous assignment, and the page with all the documentation was created. All the new documentation can be found in [this link](https://alicecatalano.github.io/RT2/).
 
-
+Second Task
 -----------------------------
-The logic of the code and how those three nodes communicate is written in the [flowchart](Final_flowchar.jpg).
-The software rely on the move_baseand gmapping packages for localizing the robot and plan the motion.
+In this task a user interface through Jupyter netbook was implemented. With this interface the user will be able to:
+* Move the robot automatically to any coordinates
+* Move the robot with a screen buttons interface
+* Move the robot with the same buttons interface but with collision avoidance.
 
-In the input_controller.py code we find the functions to manage each user choice
+**Installing and executing**
+First of all check that all the python scripts are executable, otherwise execute
+```
+chmod +x <file.py>
+```
+Then from the Linux shell open three different tabs to execute
+```shell
+roslaunch final_assignment simulation_gmapping.launch
+roslaunch final_assignment move_base.launch
+roslaunch my_final_assignment jr_launcher.launch
+```
+Finally, in the Jupyter notebook page run all the cells of the `rt2_assignment1_b.ipynb`
 
-### Mode 1 -choice1()- ###
-Function to handle the autonomous reach of a point: takes the coordinates form the user and checks if the aimed target is reached, calls the service Directions and sends the coordinates to the manage_input(request) function in `choice1.py`.
-The action of the move_base package is used, given a goal in the world, will attempt to reach it with a mobile base.
+### Mode 1  ###
+For this interface the user just insert any kind of coordinate, and presses on the `start` button and will see the robot move. At the same time the position of the robot will be printed in real time in a 2D graph, just like the scanning of the laser present on the robot. At the end, every reached or not reached position will be plotted in a histogram to check on the efficiency of the code. 
+In particular, for this function it was needed a change in the code used in the first assignment `choice1.py` because for further positions the robot wouldn't be able to arrive because of the restricted waiting time of the _Direction_ service.
+All the output graphs are displayed unther the choice menu.
 
-`manage_input(request)` : function to manage the user choice of mode 1. Sets the target and waits for the result.
-`directions_server()` : initializes the node and calls the service handler
+### Mode 2 and 3 ###
+In this modalities the robot is drove by the user with the buttons on the screen, which are intuitive and with a simple checkbox the user can initialize the collision avoidance function, that will stop the robot if a collision is suspected. This functionality is guarateed by a flag inserted in the new version of the code, now called `choice3_rt2.py`.
+In these two cases the position and scanning of the robot is displayed in a 3D environment. 
 
-### Mode 2 and 3 -choice2() and choice3()- ###
-Function to handle driving experience: calls the service to manage the input from keyboard, if the user selects mode 2 it will send 1 to the manage_input(request) function in choice2.py; if the user selects mode 3 it will send 2 to the manage_input(request) function in choice2.py
-
-The teleop_twist_keyboard topic is used.
-
-`manage_input(request)` : function called by both choice 2 and 3 but if mode 3 is choosen here the launcher for that specific mode is called.
-    
-   * `request.input_case == 1` : call keyboard teleop and the choice2.launch is launched.
-    
-   * `request.input_case == 2` : call keyboard teleop and the osbstacle avoidance and choice3.launch is launched.
-
-`input_key_server()` : initializes the node and calls the service handler
-
-Documentation
---------------
+Third Task
+------------------
 The Sphinx documentation for the whole code is available at the following link [Final_assignment_documentation](https://alicecatalano.github.io/Reasearcch-Track-1-Final-Assignment/)
