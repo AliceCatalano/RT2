@@ -18,7 +18,7 @@ In this task a user interface through Jupyter netbook was implemented. With this
 * Move the robot with a screen buttons interface
 * Move the robot with the same buttons interface but with collision avoidance.
 
-**Installing and executing**
+**Installing and executing**  
 First of all check that all the python scripts are executable, otherwise execute
 ```
 chmod +x <file.py>
