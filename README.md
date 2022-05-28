@@ -43,7 +43,7 @@ In these two cases the position and scanning of the robot is displayed in a 3D e
 
 Third Task
 ------------------
-As last task a statistical analysis was required, comparing the codes of the first assignment which links are given at the beginning of this Readme file, while the Execel spreasheed is uploaded [here](Statistical Analysis.xlsx) in this repository.
+As last task a statistical analysis was required, comparing the codes of the first assignment which links are given at the beginning of this Readme file, while the Execel spreasheed is uploaded [in this repository](Statistical Analysis.xlsx) .
 I decided to compare:  
 
 **Speed of the two codes**  
